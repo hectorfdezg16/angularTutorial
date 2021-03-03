@@ -1,0 +1,21 @@
+<!-- forma simple llamar array de usuarios-->
+<p>Mostramos los usuarios del sistema en una línea:</p>
+{{ users }}
+
+<p>Mostramos los 3 primeros usuarios del sistema en una formato de lista desordenada:</p>
+<!-- forma con lista desordenada html-->
+<ul>
+  <li>{{ users[0] }}</li>
+  <li>{{ users[1] }}</li>
+  <li>{{ users[2] }}</li>
+</ul>
+
+<p>Para finalizar mostramos todos los usuarios a través de un recorrido:</p>
+<ul>
+  <!--recorrido, damos arreglo para que nos seleccione un solo usuario, con let damos variable-->
+  <li *ngFor="let user of users">{{ user }}</li>
+</ul>
+
+<!--de momento aquí irá nuestro primer component / selector component
+hemos creado nuestro primer component-->
+<app-second></app-second>
