@@ -12,10 +12,70 @@
 
 <p>Para finalizar mostramos todos los usuarios a través de un recorrido:</p>
 <ul>
-  <!--recorrido, damos arreglo para que nos seleccione un solo usuario, con let damos variable-->
+  <!--recorrido, damos arreglo para que nos seleccione un solo usuario, con let damos variable
+  user: es la variable a la que le asignamos con let el array de users-->
   <li *ngFor="let user of users">{{ user }}</li>
+</ul>
+
+<!--preparamos condicionales-->
+<p>Comprobar si tienes acceso o no al sistema, a través de condicionales:</p>
+<ul>
+  <!--recorrido, damos arreglo para que nos seleccione un solo usuario, con let damos variable-->
+  <li *ngIf="activated">¡Acabas de entrar en el sistema!</li>
+</ul>
+
+<!--ahora no queremos llamar una lista de usuarios, queremos llamar al componente usuario-->
+<p>Llamamos al componente usuario:</p>
+<ul>
+  <!--recorrido, damos arreglo para que nos seleccione un solo usuario, con let damos variable
+  [x] sirve para indicar que componente tiene una variable de entrada, sino sería propiedad-->
+  <li *ngFor="let user of users"><app-user [nameUser]="user"></app-user></li>
+</ul>
+
+<!-- probemos ahora sin crear un li-->
+<p>Mismo ejemplo de antes pero con estructura abreviada:</p>
+<ul>
+  <!--metemos dentro bucle con asignación de variables para abreviar-->
+  <app-user *ngFor="let user of users" [nameUser]="user"></app-user>
 </ul>
 
 <!--de momento aquí irá nuestro primer component / selector component
 hemos creado nuestro primer component-->
 <app-second></app-second>
+
+<!--pasamaos a la creación de formularios (MINICRUD)-->
+<div>
+  <form (submit)="addUser(newUser)">
+    <!--guardamos este nuevo usuario en una variable newUser 
+      proveniento del valor de entrada del formulario para pasarselo a la función addUser-->
+    <input type="text" #newUser>
+    <button>Send user!</button>
+  </form>
+</div>
+
+<!--aprendemos eventos con botón-->
+<div>
+  <ul>
+    <li *ngFor="let user of users2">
+      <!--implementamos botón para cada usario, cada usuario debe decir hello!-->
+      {{ user }} <button (click)="deleteUser(user)">Delete this user</button>
+    </li>
+  </ul>
+
+  <!--evento es click donde haremos función del evento para que haga algo
+  de esta manera cuando le demos click aparecerá un alert dando un saludo-->
+  <button (click)="sayHello()">
+    Click me!
+  </button>
+</div>
+
+<!--creamos linea divisoria y listaremos contenido de la API
+concretamente usuarios de la API JSONPlaceHolder-->
+<hr>
+
+<!--para finalizar recorremos array comments para ponerlo en pantalla-->
+<div *ngFor="let comment of comments">
+  <h3>{{ comment.name }}</h3>
+  <p>{{ comment.email }}</p>
+  <p>{{ comment.body }}</p>
+</div>
