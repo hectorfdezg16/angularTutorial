@@ -1,0 +1,13 @@
+<h3>About us!</h3>
+<p>Hey what's app? This is the page of Seminar 2 about Angular!</p>
+
+<!--creamos linea divisoria y listaremos contenido de la API
+concretamente usuarios de la API JSONPlaceHolder-->
+<hr>
+
+<!--recorremos array comments para ponerlo en pantalla-->
+<div *ngFor="let comment of comments">
+    <h3>{{comment.name}}</h3>
+    <p>{{comment.email}}</p>
+    <p>{{comment.body}}</p>
+</div>
